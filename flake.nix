@@ -1,95 +1,98 @@
 {
-  description = "Justin's config";
-
+  description = "Jacob's NixOS and home-manager flake";
   inputs = {
-    # Nixpkgs
-    # nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
-    # You can access packages and modules from different nixpkgs revs
-    # at the same time. Here's a working example:
-    # nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
-
-    # Home manager
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-    # TODO: Add any other flake you might need
-    # hardware.url = "github:nixos/nixos-hardware";
-
-    # Shameless plug: looking for a way to nixify your themes and make
-    # everything match nicely? Try nix-colors!
-    # nix-colors.url = "github:misterio77/nix-colors";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    home-manager-wsl.url = "github:viperML/home-manager-wsl";
+    nix-colors.url = "github:misterio77/nix-colors";
+    nixvim = {
+      url = "github:pta2002/nixvim?rev=bd6f978d51eb95c8633744331546efbd9206d228";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+#    book = {
+#      url = github:alex-shpak/hugo-book;
+#      flake = false;
+#    };
   };
-
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, home-manager-wsl, nix-colors, ...}@inputs:
     let
-      inherit (self) outputs;
-      forAllSystems = nixpkgs.lib.genAttrs [
-        "aarch64-linux"
-        "i686-linux"
-        "x86_64-linux"
-        "aarch64-darwin"
-        "x86_64-darwin"
-      ];
-    in
-    rec {
-      # Your custom packages
-      # Acessible through 'nix build', 'nix shell', etc
-      packages = forAllSystems (system:
-        let pkgs = nixpkgs.legacyPackages.${system};
-        in import ./pkgs { inherit pkgs; }
-      );
-      # Devshell for bootstrapping
-      # Acessible through 'nix develop' or 'nix-shell' (legacy)
-      devShells = forAllSystems (system:
-        let pkgs = nixpkgs.legacyPackages.${system};
-        in import ./shell.nix { inherit pkgs; }
-      );
+      system = "x86_64-linux";
+      lib = nixpkgs.lib;
+      pkgs = nixpkgs.legacyPackages.${system};
+    in {
 
-      # Your custom packages and modifications, exported as overlays
-      overlays = import ./overlays { inherit inputs; };
-      # Reusable nixos modules you might want to export
-      # These are usually stuff you would upstream into nixpkgs
-      nixosModules = import ./modules/nixos;
-      # Reusable home-manager modules you might want to export
-      # These are usually stuff you would upstream into home-manager
-      homeManagerModules = import ./modules/home-manager;
-
-      # NixOS configuration entrypoint
-      # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {
-        # FIXME replace with your hostname
-        fibonacci = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs outputs; };
+        virtualbox = lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit self inputs nix-colors; };
           modules = [
-            # > Our main nixos configuration file <
-            ./nixos/configuration.nix
             ./system
-            # Add home manager to flake
-          #  home-manager.nixosModules.home-manager {
-          #    home-manager.useGlobalPkgs = true;
-          #    home-manager.users.justin = {
-          #      imports = [ ./home-manager/home.nix
-          #                ];
-          #    };
-          #  }
+            ./hosts/virtualbox.nix
+            home-manager.nixosModules.home-manager {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = { inherit nix-colors; };
+                users.justin = {
+                  imports = [
+                    ./home
+                    inputs.nixvim.homeManagerModules.nixvim
+                  ];
+                };
+              };
+            }
           ];
         };
-      };
-
-      # Standalone home-manager configuration entrypoint
-      # Available through 'home-manager --flake .#your-username@your-hostname'
-      homeConfigurations = {
-        # FIXME replace with your username@hostname
-        "justin@fibonacci" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-          extraSpecialArgs = { inherit inputs outputs; };
+        fibonacci = lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit self inputs nix-colors; };
           modules = [
-            # > Our main home-manager configuration file <
-            ./home-manager/home.nix
+            ./system
+          #  ./hosts/laptop.nix
+            ./nixos/configuration.nix
+            home-manager.nixosModules.home-manager {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = { inherit nix-colors; };
+                users.justin = {
+                  imports = [
+                   # ./home
+                   # ./home/desktop/picom.nix
+                   # inputs.nixvim.homeManagerModules.nixvim
+                    ./home-manager/home.nix
+                  ];
+                };
+              };
+            }
           ];
         };
       };
+      homeConfigurations = {
+        wsl = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${system};
+          extraSpecialArgs = { inherit nix-colors; };
+          modules = [
+            ./home
+            ./home/utils/wsl.nix
+            inputs.nixvim.homeManagerModules.nixvim
+            home-manager-wsl.homeModules.default { wsl.baseDistro = "ubuntu"; }
+          ];
+        };
+      };
+     # apps.${system}.default = {
+     #   type = "app";
+     #   program = "${
+     #         pkgs.writeShellScriptBin "my-hugo-serve" ''
+     #           mkdir -p docs/themes
+     #           ln -s ${inputs.book} docs/themes/book
+     #           ${pkgs.emacs28-nox}/bin/emacs --batch -Q --script publish.el
+     #           ${pkgs.hugo}/bin/hugo server -D --source docs --theme book
+     #         ''
+     #       }/bin/my-hugo-serve";
+     # };
     };
 }

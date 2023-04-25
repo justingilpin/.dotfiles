@@ -1,7 +1,8 @@
 { config, lib, pkgs, ...}:
 {
     imports = [
-        ./x11
+        ./x11 # enables qtile
+    #    ./plasma # enables KDE Plasma
         ./fonts
         ./audio
     #    ./users.nix
@@ -27,7 +28,14 @@
             dunst
             feh
             networkmanagerapplet
-            
+            wget
+            alacritty
+            nano
+            git
+            git-crypt
+            emacs
+            firefox
+                
             # second attempt at qtile-extras
             #python310Packages.qtile-extras
             #python310Packages.setuptools
@@ -58,10 +66,11 @@
             wayland-utils
             wdisplays
             wlr-randr
-
+            
             libcanberra-gtk3
             brightnessctl
             nitrogen
+            feh
             autorandr
             arandr
             ## wifi

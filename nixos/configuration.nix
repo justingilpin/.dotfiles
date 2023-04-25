@@ -144,6 +144,19 @@
         emacs
         home-manager
         wget
+        nm-tray
+        joplin-desktop
+        zoom-us
+        # Everdo Appimage
+        (appimageTools.wrapType2 {
+          name = "everdo";
+          src = fetchurl {
+            url = "https://release.everdo.net/1.8.5/Everdo-1.8.5.AppImage";
+            sha256 = "sha256-/DZ6CCJOS/lm5hzBailLOtrUDRyOEzVBDKwYmlFpsU8=";
+          };
+          extraPkgs = pkgs: with pkgs; [ ];
+        })
+ 
       ];
     };
   };
