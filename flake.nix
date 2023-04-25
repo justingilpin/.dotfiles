@@ -50,9 +50,9 @@
           inherit system;
           specialArgs = { inherit self inputs nix-colors; };
           modules = [
-            ./system
-          #  ./hosts/laptop.nix
-            ./nixos/configuration.nix
+            ./modules/qtile
+            ./hosts/lenovo/configuration.nix
+            ./overlays
             home-manager.nixosModules.home-manager {
               home-manager = {
                 useGlobalPkgs = true;
@@ -60,10 +60,8 @@
                 extraSpecialArgs = { inherit nix-colors; };
                 users.justin = {
                   imports = [
-                   # ./home
                    # ./home/desktop/picom.nix
-                   # inputs.nixvim.homeManagerModules.nixvim
-                    ./home-manager/home.nix
+                    ./home
                   ];
                 };
               };
