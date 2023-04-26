@@ -1,7 +1,7 @@
 { config, lib, pkgs, ...}:
 {
     imports = [
-        ./qtile.nix # enables qtile
+    #    ./qtile.nix # enables qtile
         ./fonts
     #    ./users.nix
     #    ./security_gpg.nix
@@ -21,6 +21,8 @@
         in with pkgs; [
        #     sddmClairvoyance
        #     sddmSD.sddm-sugar-dark
+            python311Packages.qtile-extras
+            qtile-unwrapped
             libsForQt5.qt5.qtgraphicaleffects
             picom-jonaburg
             dunst
