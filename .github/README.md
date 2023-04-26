@@ -17,7 +17,7 @@
 <br>
 
 <div align="justify">
-<div align="center">
+<div align="left">
 
 # ❄️ NixOS dotfiles
 
