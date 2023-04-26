@@ -7,7 +7,8 @@
 </p>
 
 <p align="center">
-<a href="https://github.com/justingilpin/.dotfiles/actions/workflows/check.yml"><img src="https://github.com/justingilpin/.dotfiles/actions/workflows/check.yml/badge.svg"></a> <a href="https://github.com/justingilpin/.dotfiles/actions/workflows/fmt.yml"><img src="https://github.com/justingilpin/.dotfiles/actions/workflows/fmt.yml/badge.svg"/></a>
+<!-- Fix Nix Flake check and formatting check --> 
+<!-- <a href="https://github.com/justingilpin/.dotfiles/actions/workflows/check.yml"><img src="https://github.com/justingilpin/.dotfiles/actions/workflows/check.yml/badge.svg"></a> <a href="https://github.com/justingilpin/.dotfiles/actions/workflows/fmt.yml"><img src="https://github.com/justingilpin/.dotfiles/actions/workflows/fmt.yml/badge.svg"/></a> -->
 </p>
 
 <div align="justify">
