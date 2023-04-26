@@ -6,6 +6,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    inputs.hyprland.url = "github:hyprwm/Hyprland";
     home-manager-wsl.url = "github:viperML/home-manager-wsl";
     nix-colors.url = "github:misterio77/nix-colors";
     nixvim = {
@@ -53,6 +54,7 @@
             ./modules/qtile
             ./hosts/lenovo/configuration.nix
             ./overlays
+           # ./modules/hyprland
             home-manager.nixosModules.home-manager {
               home-manager = {
                 useGlobalPkgs = true;
