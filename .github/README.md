@@ -12,10 +12,6 @@
 <p align="center">
 <a href="https://github.com/justin/.dotfiles/blob/main/LICENSE"><img src="https://img.shields.io/static/v1.svg?style=flat&label=License&message=MIT&logoColor=CAD3F5&colorA=24273A&colorB=8AADF4"/></a>
 </p>
-
-<br>
-<br>
-
 <div align="justify">
 <div align="left">
 
@@ -49,7 +45,7 @@ iwctl --passphrase [passphrase] station [device] connect [SSID]
 ## Installation
 
 Prerequisites:
-- [NixOS installed and running](https://nixos.org/manual/nixos/stable/index.>
+- [NixOS installed and running](https://nixos.org/manual/nixos/stable/)
 - [Flakes enabled](https://nixos.wiki/wiki/flakes)
 
 ** IMPORTANT: Don't use the lenovo/hardware-configuration.nix   **
