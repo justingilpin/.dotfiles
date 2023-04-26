@@ -1,5 +1,5 @@
-<!-- Rxyhn's yuki -->
-<!-- https://github.com/rxyhn/yuki -->
+<!-- Justin Gilpin's .dotfiles -->
+<!-- https://github.com/justingilpin/.dotfiles -->
 
 <p align="center">
 <a href="https://github.com/nixos/nixpkgs"><img src="https://img.shields.io/badge/NixOS-unstable-informational.svg?style=flat&logo=nixos&logoColor=CAD3F5&colorA=24273A&colorB=8AADF4"></a>
@@ -10,9 +10,6 @@
 <a href="https://github.com/justingilpin/.dotfiles/actions/workflows/check.yml"><img src="https://github.com/rxyhn/yuki/actions/workflows/check.yml/badge.svg"></a> <a href="https://github.com/justingilpin/.dotfiles/actions/workflows/fmt.yml"><img src="https://github.com/justingilpin/.dotfiles/actions/workflows/fmt.yml/badge.svg"/></a>
 </p>
 
-<p align="center">
-<a href="https://github.com/justin/.dotfiles/blob/main/LICENSE"><img src="https://img.shields.io/static/v1.svg?style=flat&label=License&message=MIT&logoColor=CAD3F5&colorA=24273A&colorB=8AADF4"/></a>
-</p>
 <div align="justify">
 <div align="left">
 
@@ -49,7 +46,7 @@ Prerequisites:
 - [NixOS installed and running](https://nixos.org/manual/nixos/stable/)
 - [Flakes enabled](https://nixos.wiki/wiki/flakes)
 
-** IMPORTANT: Don't use the lenovo/hardware-configuration.nix   **
+** IMPORTANT: Don't use the lenovo/hardware-configuration.nix **
 
 Generate your own hardware-configuration or copy from a running NixOS at /etc/nixos 
 
