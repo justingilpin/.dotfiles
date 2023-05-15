@@ -24,6 +24,7 @@
 - [Notusknot's dotfiles](https://github.com/notusknot/dotfiles-nix/tree/main) Hyprland stuff
 - [Fufexan's dotfiles](https://github.com/fufexan/dotfiles/tree/main) Flake stuff
 - [Rxyhn's dotfiles](https://github.com/rxyhn/yuki) 
+- [Ruixi-rebirth](https://github.com/Ruixi-rebirth) Hyprland 
 
 ## Info
 - RAM usage on startup:
