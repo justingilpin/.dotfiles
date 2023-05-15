@@ -29,6 +29,8 @@
           httpx
           pygobject3
         ]))
+        gimp-with-plugins
+        vuze
         nodePackages.pyright
         nodejs
         nodePackages.npm

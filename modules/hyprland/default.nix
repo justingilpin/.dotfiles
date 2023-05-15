@@ -1,34 +1,92 @@
-{ inputs, pkgs, lib, config, ... }: {
-
-  programs.hyprland.package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-
+{config, lib, pkgs, inputs,  ...}:  {
   imports = [
-
+ #   ../eww
+    ../waybar
+ #   ../mpv
+    ../fonts
   ];
 
+# nixpkgs.config.allowBroken = true; # PIA app needs this
 
   programs = {
-    # enable hyprland and required options
-    hyprland = {
+    dconf.enable = true;
+#    light.enable = true; # can't seem to lower brightness with it
+  };
+  programs.hyprland = {
+    enable = true;
+    nvidiaPatches = true;
+    xwayland = {
       enable = true;
-      nvidiaPatches = true;
-#      xwayland.hidpi = true;
+      hidpi = false;
     };
+  };
 
-    # backlight control
- #   light.enable = true;
+#  sound = {
+#    enable = true;
+#    mediaKeys.enable = true;
+#  };
 
- #   steam.enable = true;
+  security.pam.services.swaylock = { };
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    # needed?
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+#      inputs.xdg-desktop-portal-hyprland.packages.${pkgs.system}.default
+    ];
+  };
 
-#    sway = {
-#      enable = true;
-  #    package = inputs.self.packages.${pkgs.hostPlatform.system}.sway-hidpi;
+#  home-manager.users.justin = {
+#    home.file.".config/hypr/hyprland.conf".source = ./hyprland.conf;
+#  };
+
+  users.users = {
+    justin = {
+      packages = with pkgs; [
+        # apps specific for Hyprland
+      #  xdg-utils
+        foot # wayland terminal
+        libsForQt5.dolphin # dolphin file browser
+        wl-clipboard 
+        libgnome-keyring
+        gsettings-qt
+        amarena-theme # gtk theme amarena
+
+#-------Blue Tooth------#
+#        blueman # bluetooth
+#        bluez # bluetooth support
+#        bluez-alsa # Alsa backend
+
+        xdg-desktop-portal-hyprland
+        libsForQt5.kdeconnect-kde # features for phone
+        wayland-utils # useful?
+        way-displays # useful?
+        kanshi # display config tool
+        openrgb-with-all-plugins # RGB lighting control
+        caprine-bin # facebook messenger desktop app
+        networkmanagerapplet # proper nm tray
+        kitty
+        discord
+        polkit_gnome
+        openvpn
+        neofetch
+        hyprpaper
+        eww-wayland
+        waybar
+        rofi-wayland
+        trayer
+        mpd-small
+        mpvpaper
+        socat
+     #   pamixer
+        swaylock-effects
+        pulseaudio
+        pavucontrol
+        dunst        
+#        inputs.hypr-contrib.packages.${pkgs.system}.grimblast
+#        inputs.hyprpicker.packages.${pkgs.system}.hyprpicker
+      ];
     };
-
-    # add hyprland to display manager sessions
-  #  xserver.displayManager.sessionPackages = [inputs.hyprland.packages.${pkgs.hostPlatform.system}.default];
-  
-
-
-
+  };
 }

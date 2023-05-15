@@ -2,11 +2,11 @@
 
 {
   imports = [
-    ../../common/cpu/intel
-    ../../common/gpu/nvidia/prime.nix
-    ../../common/pc/laptop
-    ../../common/pc/laptop/ssd
-    ../../common/pc/laptop/hdd
+    ./../common/cpu/intel
+    ./../common/gpu/nvidia/prime.nix
+    ./../common/pc/laptop
+    ./../common/pc/laptop/ssd
+    ./../common/pc/laptop/hdd
   ];
 
   hardware = {
