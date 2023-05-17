@@ -17,6 +17,7 @@
       fantasque-sans-mono
       font-awesome
       nerdfonts
+      meslo-lgs-nf
    #   (iosevka.override {
    #     privateBuildPlan = builtins.readFile ./iosevka.toml;
    #     set = "josevka-mono";

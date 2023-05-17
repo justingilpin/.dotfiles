@@ -15,6 +15,35 @@
   colorScheme = nix-colors.colorSchemes.gruvbox-dark-hard;
 
   programs.home-manager.enable = true;
+  programs.vscode = {
+  enable = true;
+  extensions = with pkgs.vscode-extensions; [
+    dracula-theme.theme-dracula
+    vscodevim.vim
+    yzhang.markdown-all-in-one
+  ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+    {
+      name = "remote-ssh-edit";
+      publisher = "ms-vscode-remote";
+      version = "0.47.2";
+      sha256 = "1hp6gjh4xp2m1xlm1jsdzxw9d8frkiidhph6nvl24d0h8z34w49g";
+    }
+  ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+    {
+      name = "signageos-vscode-sops-beta";
+      publisher = "signageos";
+      version = "0.7.0";
+      sha256 = "w7v4rAd9LN1Hd2WIF4W1TcHPUcxsoIiHCYe4QNIjHvw=";
+    }
+  ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+    {
+      name = "joplin-vscode-plugin";
+      publisher = "rxliuli";
+      version = "1.1.1";
+      sha256 = "77U9xu3MNw1Ao6MXOYiqemr/9hevMN7Wm70Tur9HRP4=";
+    }
+  ];
+  };
   home.packages = with pkgs; [
      texlive.combined.scheme-full
         auctex
@@ -29,8 +58,17 @@
           httpx
           pygobject3
         ]))
+        #-------Favorite Software-------#
         gimp-with-plugins
-        vuze
+        deluge-gtk
+        ranger
+        neovim
+
+        #-----------Security------------#
+        gnupg
+        sops
+        age
+
         nodePackages.pyright
         nodejs
         nodePackages.npm

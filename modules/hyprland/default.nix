@@ -45,9 +45,6 @@
     justin = {
       packages = with pkgs; [
         # apps specific for Hyprland
-      #  xdg-utils
-        foot # wayland terminal
-        libsForQt5.dolphin # dolphin file browser
         wl-clipboard 
         libgnome-keyring
         gsettings-qt
@@ -57,17 +54,17 @@
 #        blueman # bluetooth
 #        bluez # bluetooth support
 #        bluez-alsa # Alsa backend
-
+        brightnessctl
         xdg-desktop-portal-hyprland
         libsForQt5.kdeconnect-kde # features for phone
         wayland-utils # useful?
         way-displays # useful?
         kanshi # display config tool
         openrgb-with-all-plugins # RGB lighting control
-        caprine-bin # facebook messenger desktop app
         networkmanagerapplet # proper nm tray
         kitty
         discord
+        starship # terminal prompt
         polkit_gnome
         openvpn
         neofetch
@@ -78,7 +75,6 @@
         trayer
         mpd-small
         mpvpaper
-        socat
      #   pamixer
         swaylock-effects
         pulseaudio
