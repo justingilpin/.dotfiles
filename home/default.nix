@@ -63,6 +63,16 @@
         deluge-gtk
         ranger
         neovim
+        kitty
+        neofetch
+        mpd-small
+        discord
+        pulseaudio
+        pavucontrol
+        starship
+        openvpn
+
+
 
         #-----------Security------------#
         gnupg

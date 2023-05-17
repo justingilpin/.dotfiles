@@ -62,26 +62,15 @@
         kanshi # display config tool
         openrgb-with-all-plugins # RGB lighting control
         networkmanagerapplet # proper nm tray
-        kitty
-        discord
-        starship # terminal prompt
         polkit_gnome
-        openvpn
-        neofetch
         hyprpaper
         eww-wayland
         waybar
         rofi-wayland
         trayer
-        mpd-small
         mpvpaper
-     #   pamixer
         swaylock-effects
-        pulseaudio
-        pavucontrol
-        dunst        
-#        inputs.hypr-contrib.packages.${pkgs.system}.grimblast
-#        inputs.hyprpicker.packages.${pkgs.system}.hyprpicker
+        dunst
       ];
     };
   };
