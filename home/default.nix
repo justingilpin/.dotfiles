@@ -44,6 +44,21 @@
     }
   ];
   };
+  programs.zsh = { 
+      enable = true;
+      enableCompletion = true;
+      enableAutosuggestions = true;
+      initExtra = builtins.readFile ./files/zshrc;
+      initExtraBeforeCompInit = ''
+        source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+	source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.zsh
+      '';
+      oh-my-zsh = {
+        enable = true;
+    #    theme = "robbyrussell";
+        plugins = [ "python" ];
+      };
+    }; 
   home.packages = with pkgs; [
      texlive.combined.scheme-full
         auctex
@@ -61,7 +76,7 @@
         #-------Favorite Software-------#
         gimp-with-plugins
         deluge-gtk
-        ranger
+	lf # ranger replacement
         neovim
         kitty
         neofetch
@@ -69,12 +84,14 @@
         discord
         pulseaudio
         pavucontrol
-        starship
         openvpn
+        #------------ZSH----------------#
+	starship
+	zsh-syntax-highlighting
+	zsh-vi-mode
 
 
-
-        #-----------Security------------#
+      #-----------Security------------#
         gnupg
         sops
         age
@@ -116,22 +133,6 @@
         }
       ) 
     ];
-#  programs.gpg.enable = true;
-#  services.gpg-agent = {
-#    enable = true;
-#    pinentryFlavor = "gtk2";
-#    enableBashIntegration = true;
-#    enableZshIntegration = true;
-#    enableSshSupport = true;
-#    defaultCacheTtl = 86400;
-#    defaultCacheTtlSsh = 86400;
-#  };
-#  programs.keychain = {
-#    enable = true;
-#    keys = [
-#        "id_ed25519"
-#    ];
-#  };
 
 
 

@@ -65,8 +65,8 @@
 
   # Shell
 
-  programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.zsh;
+  programs.zsh.enable = true; # configured in /modules/shell
+  environment.shells = with pkgs; [ zsh ]; # Many programs look if user is a 'normal' user 
   environment.binsh = "${pkgs.dash}/bin/dash";
  
   # Set your hostname
@@ -84,9 +84,10 @@
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  environment.systemPackages = [
-    pkgs.meslo-lgs-nf
-  ];
+#  environment.systemPackages = [
+#    pkgs.meslo-lgs-nf
+#    pkgs.zsh-autosuggestions
+#  ];
 
 
 
@@ -100,6 +101,7 @@
       initialPassword = "password";
       isNormalUser = true;
       description = "justin";
+      shell = pkgs.zsh;
       openssh.authorizedKeys.keys = [
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
       ];
