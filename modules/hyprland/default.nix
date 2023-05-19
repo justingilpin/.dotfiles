@@ -4,6 +4,7 @@
     ../waybar
  #   ../mpv
     ../fonts
+   # ../nvim
   ];
 
 # nixpkgs.config.allowBroken = true; # PIA app needs this
