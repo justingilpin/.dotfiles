@@ -92,7 +92,7 @@ alias train='vimtutor'
 # Neovim
 alias -s txt=nvim
 alias -s nix=nvim
-
+alias vim=nvim
 # Git
 alias gs='git status'
 alias gc='git commit -m'
