@@ -10,6 +10,7 @@
    # ./devel
    # ./media
     nix-colors.homeManagerModule
+   ./../modules/nvim
   ];
 
   colorScheme = nix-colors.colorSchemes.gruvbox-dark-hard;
@@ -59,21 +60,22 @@
         plugins = [ "python" ];
       };
     }; 
-  programs.neovim = {
-    enable = true;
-    package = pkgs.neovim-unwrapped;
-    plugins = with pkgs.vimPlugins; [
-      # nvim-surround
-      packer-nvim
-    ];
-    extraConfig = ''
-      packadd! packer.nvim
-      luafile ${./files/nvim/lua/util.lua}
-      luafile ${./files/nvim/lua/plugins.lua}
-      luafile ${./files/nvim/lua/options.lua}
-      luafile ${./files/nvim/lua/keys.lua}
-    '';
-  };
+  #programs.neovim = {
+  #  enable = true;
+  #  package = pkgs.neovim-unwrapped;
+  #  plugins = with pkgs.vimPlugins; [
+  #    # nvim-surround
+  #     packer-nvim
+  #  ];
+  #  extraConfig = ''
+  #    packadd! packer.nvim
+  #    luafile ${./files/nvim/lua/util.lua}
+  #    luafile ${./files/nvim/lua/plugins.lua}
+  #    luafile ${./files/nvim/lua/options.lua}
+  #    luafile ${./files/nvim/lua/keys.lua}
+  #  '';
+  #};
+  #home.file.".config/nvim/settings.lua".source = ./files/nvim/lua/init.lua;
   home.packages = with pkgs; [
      texlive.combined.scheme-full
         auctex
@@ -91,7 +93,7 @@
         #-------Favorite Software-------#
         gimp-with-plugins
         deluge-gtk
-	lf # ranger replacement
+        lf # ranger replacement
         kitty
         neofetch
         mpd-small
@@ -99,10 +101,11 @@
         pulseaudio
         pavucontrol
         openvpn
+        sioyek # pdf viewer
         #------------ZSH----------------#
-	starship
-	zsh-syntax-highlighting
-	zsh-vi-mode
+        starship
+        zsh-syntax-highlighting
+        zsh-vi-mode
 
 
       #-----------Security------------#
