@@ -59,6 +59,21 @@
         plugins = [ "python" ];
       };
     }; 
+  programs.neovim = {
+    enable = true;
+    package = pkgs.neovim-unwrapped;
+    plugins = with pkgs.vimPlugins; [
+      # nvim-surround
+      packer-nvim
+    ];
+    extraConfig = ''
+      packadd! packer.nvim
+      luafile ${./files/nvim/lua/util.lua}
+      luafile ${./files/nvim/lua/plugins.lua}
+      luafile ${./files/nvim/lua/options.lua}
+      luafile ${./files/nvim/lua/keys.lua}
+    '';
+  };
   home.packages = with pkgs; [
      texlive.combined.scheme-full
         auctex
@@ -77,7 +92,6 @@
         gimp-with-plugins
         deluge-gtk
 	lf # ranger replacement
-        neovim
         kitty
         neofetch
         mpd-small
