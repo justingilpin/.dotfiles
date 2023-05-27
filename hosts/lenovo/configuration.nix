@@ -83,7 +83,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
   boot.kernelPackages = pkgs.linuxPackages_latest;
-
+  services.logind.extraConfig = "RuntimeDirectorySize=6G";
 #  environment.systemPackages = [
 #    pkgs.meslo-lgs-nf
 #    pkgs.zsh-autosuggestions
@@ -111,6 +111,7 @@
         firefox
         nano
  #       polkit_gnome
+        lutris
         brave
         kate
         git

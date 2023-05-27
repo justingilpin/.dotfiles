@@ -94,6 +94,7 @@
         gimp-with-plugins
         deluge-gtk
         lf # ranger replacement
+        gperftools # TCMalloc for development 
         kitty
         neofetch
         mpd-small
@@ -102,7 +103,10 @@
         pavucontrol
         openvpn
         sioyek # pdf viewer
-        #------------ZSH----------------#
+        conda
+        obsidian
+        
+      #------------ZSH----------------#
         starship
         zsh-syntax-highlighting
         zsh-vi-mode
