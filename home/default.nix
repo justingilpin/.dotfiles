@@ -95,7 +95,6 @@
         deluge-gtk
         lf # ranger replacement
         gperftools # TCMalloc for development 
-        kitty
         neofetch
         mpd-small
         discord

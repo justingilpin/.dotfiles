@@ -63,6 +63,10 @@
 #    jack.enable = true;
   };
 
+  # Enable Tailscale
+  services.tailscale.enable = true;
+
+
   # Shell
 
   programs.zsh.enable = true; # configured in /modules/shell
@@ -88,10 +92,22 @@
 #    pkgs.meslo-lgs-nf
 #    pkgs.zsh-autosuggestions
 #  ];
-
-
-
-  #  Configure your system-wide user settings (groups, etc), add more users as needed.
+  # Enable NTFS and mount Internal Storage
+  boot.supportedFilesystems = [ "ntfs" ];
+    fileSystems."/mnt/storage" = 
+    { device = "/dev/disk/by-uuid/34E2AD0DE2ACD480";
+      fsType = "ntfs3";
+      options = [ "rw" "uid=1000" "gid=1000" "dmask=027" "fmask=137" "user" "users" "noauto" "x-systemd.automount" "nofail"];
+    };
+  # Install System Wide Packages
+  environment.systemPackages = with pkgs; [
+    kitty
+    git
+    git-crypt
+    wget
+    tailscale
+  ];
+  #  User Conigured Packages
   users.users = {
     # FIXME: Replace with your username
     justin = {
@@ -114,13 +130,9 @@
         lutris
         brave
         kate
-        git
-        git-crypt
-        vim
         alacritty
         emacs
         home-manager
-        wget
         nm-tray # does it work? Qtile specific?
         joplin-desktop
         zoom-us

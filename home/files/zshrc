@@ -90,6 +90,8 @@ alias cefi='sudo nix-env --delete-generations old --profile /nix/var/nix/profile
 alias train='vimtutor'
 alias aigraphics='export NIXPKGS_ALLOW_UNFREE=1;nvidia-offload nix-shell;nvidia-offload bash webui.sh --skip-torch-cuda-test --precision full --no-half'
 
+# Kitty / Enter root@whatever after alias to prevent xterm errors
+alias kssh='kitty +kitten ssh'
 
 # Neovim
 alias -s txt=nvim
