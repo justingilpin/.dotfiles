@@ -23,27 +23,27 @@
       user = "justin";
     in {
       nixosConfigurations = {
-       # virtualbox = lib.nixosSystem {
-       #   inherit system;
-       #   specialArgs = { inherit self inputs nix-colors; };
-       #   modules = [
+        virtualbox = lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit self inputs nix-colors; };
+          modules = [
        #     ./system
-       #     ./hosts/virtualbox.nix
-       #     home-manager.nixosModules.home-manager {
-       #       home-manager = {
-       #         useGlobalPkgs = true;
-       #         useUserPackages = true;
-       #         extraSpecialArgs = { inherit nix-colors; };
-       #         users.justin = {
-       #           imports = [
-       #             ./home
-       #             inputs.nixvim.homeManagerModules.nixvim
-       #           ];
-       #         };
-       #       };
-       #     }
-       #   ];
-       # };
+            ./hosts/server
+          #  home-manager.nixosModules.home-manager {
+          #    home-manager = {
+          #      useGlobalPkgs = true;
+          #      useUserPackages = true;
+          #      extraSpecialArgs = { inherit nix-colors; };
+          #      users.justin = {
+          #        imports = [
+                #    ./home
+                #    inputs.nixvim.homeManagerModules.nixvim
+          #        ];
+          #      };
+          #    };
+          #  }
+          ];
+        };
 #------Lenovo Legion Laptop -------#
         fibonacci = lib.nixosSystem {
           inherit system;
