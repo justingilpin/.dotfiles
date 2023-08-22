@@ -78,6 +78,9 @@
 
   # Enable Networking
   networking.networkmanager.enable = true;
+  
+  # Firewall
+  networking.firewall.enable = false;
 
   # Enable Polkit to manage passwords
 #  security.polkit.enable = true;
@@ -162,5 +165,5 @@
 #  };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  system.stateVersion = "22.11";
+  system.stateVersion = "23.05"; #22.11
 }

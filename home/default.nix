@@ -90,10 +90,18 @@
           httpx
           pygobject3
         ]))
+          # Wine + winetricks
+          wineWowPackages.waylandFull
+          winetricks
+          # Vulkan
+          vulkan-cts
+          vulkan-tools
+
+
         #-------Favorite Software-------#
         gimp-with-plugins
         deluge-gtk
-        lf # ranger replacement
+        lf # file manager | ranger replacement
         gperftools # TCMalloc for development 
         neofetch
         mpd-small
@@ -101,11 +109,14 @@
         pulseaudio
         pavucontrol
         openvpn
+        xfce.thunar # file manager
         sioyek # pdf viewer
         conda
         obsidian
-        
-      #------------ZSH----------------#
+        vlc
+        lutris
+        restic
+        #------------ZSH----------------#
         starship
         zsh-syntax-highlighting
         zsh-vi-mode
@@ -153,8 +164,6 @@
         }
       ) 
     ];
-
-
 
     xresources = {
       extraConfig = ''
