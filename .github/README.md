@@ -52,6 +52,17 @@ Prerequisites:
 
 Generate your own hardware-configuration or copy from a running NixOS at /etc/nixos 
 
+
+Add preferred programs like git and neovim to the configuration file. 
+
+Rebuild and switch the system configuration
+
+Clone the git on the home directory
+
+```bash
+git clone https://github.com/justingilpin/.dotfiles.git
+```
+
 ```bash
 sudo nixos-generate-config
 ```
@@ -64,8 +75,6 @@ You can then copy this to a the `hosts/` directory (note: change `yourComputer` 
 mkdir hosts/yourComputer
 cp /etc/nixos/hardware-configuration.nix ~/.dotfiles/hosts/yourComputer/
 ```
-
-Rebuild and switch the system configuration
 
 ```bash
 sudo nixos-rebuild switch --flake .#yourComputer
