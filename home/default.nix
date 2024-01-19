@@ -47,21 +47,21 @@
 #  ];
 #  };
 
-#  programs.zsh = { 
-#      enable = true;
-#      enableCompletion = true;
-#      enableAutosuggestions = true;
-#      initExtra = builtins.readFile ./files/zshrc;
-#      initExtraBeforeCompInit = ''
-#        source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-#	source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.zsh
-#      '';
-#      oh-my-zsh = {
-#        enable = true;
+  programs.zsh = { 
+      enable = true;
+      enableCompletion = true;
+      enableAutosuggestions = true;
+      initExtra = builtins.readFile ./files/zshrc;
+      initExtraBeforeCompInit = ''
+        source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+	source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.zsh
+      '';
+      oh-my-zsh = {
+        enable = true;
     #    theme = "robbyrussell";
-#        plugins = [ "python" ];
-#      };
-#    }; 
+        plugins = [ "python" ];
+      };
+    }; 
   programs.vscode = {
   enable = true;
   extensions = with pkgs.vscode-extensions; [
@@ -131,9 +131,9 @@
  #       lutris
 #        restic
         #------------ZSH----------------#
- #       starship
- #       zsh-syntax-highlighting
- #       zsh-vi-mode
+        starship
+        zsh-syntax-highlighting
+        zsh-vi-mode
 
 
       #-----------Security------------#

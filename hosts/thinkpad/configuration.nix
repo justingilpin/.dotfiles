@@ -63,6 +63,11 @@
   # Enable Tailscale
   services.tailscale.enable = true;
 
+  # Shell
+  programs.zsh.enable = true; # configured in /modules/shell
+  environment.shells = with pkgs; [ zsh ]; # Many programs look if user is a 'normal' user
+  environment.binsh = "${pkgs.dash}/bin/dash";
+  # Also check that user has shell enabled
 
   # Enable the Plasma 5 Desktop Environment.
   services.xserver.displayManager.sddm.enable = true;
@@ -88,16 +93,14 @@
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
-      firefox
-      kitty
       zoom-us
-      alacritty
-      git
-      git-crypt
-      wget
       tailscale
       obsidian
     ];
+    shell = pkgs.zsh;
+    openssh.authorizedKeys.keys = [
+    # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
+  ];
   };
 
   # List packages installed in system profile. To search, run:
@@ -105,6 +108,11 @@
   environment.systemPackages = with pkgs; [
   #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
+    git
+    git-crypt
+    alacritty
+    kitty
+    firefox
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -116,11 +124,6 @@
   };
 
   # List services that you want to enable:
-
-  # Shell
-  # programs.zsh.enable = true; #configured in /modules/shell
-  # environment.shells = with pkgs; [ zsh ]; # Many programs look if user is a 'normal' user
-  # enviroment.binsh = "${pkgs.dash}/bin/dash";
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
@@ -152,6 +155,7 @@
   # and migrated your data accordingly.
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
+  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.11"; # Did you read the comment?
 
 }
