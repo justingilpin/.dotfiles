@@ -93,7 +93,7 @@
         (python39.withPackages(p: with p; [
           fontforge
           numpy
-	  jupyter
+#	  jupyter
 #	  ipykernel
 #	  matplotlib
 #	  tensorflow
@@ -127,8 +127,8 @@
  #       sioyek # pdf viewer
 #        conda
 #        obsidian
-#        vlc
-#        lutris
+ #       vlc
+ #       lutris
 #        restic
         #------------ZSH----------------#
  #       starship

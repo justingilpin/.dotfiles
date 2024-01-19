@@ -17,6 +17,11 @@
     };
   };
 
+  # Quick fix for Obsidian to allow insecure install
+    nixpkgs.config.permittedInsecurePackages = [
+    "electron-25.9.0"
+  ];
+  
   nix = {
     settings = {
       # Enable flakes and new 'nix' command
@@ -37,8 +42,8 @@
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
   systemd.services.systemd-udevd.restartIfChanged = false;
   # Set your time zone.
-  # time.timeZone = "Asia/Manila";
-  time.timeZone = "America/New_York";
+  time.timeZone = "Asia/Manila";
+  # time.timeZone = "America/New_York";
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -91,6 +96,7 @@
       git-crypt
       wget
       tailscale
+      obsidian
     ];
   };
 

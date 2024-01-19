@@ -3,7 +3,7 @@
 # Flex on ubuntu users
 neofetch # remove pkg count for more speed
 
-export SOPS_AGE_KEY_FILE=$HOME/.config/sops/age/keys.txt
+# export SOPS_AGE_KEY_FILE=$HOME/.config/sops/age/keys.txt
 export EDITOR=code
 BROWSER=brave
 # History in cache directory:
@@ -80,8 +80,8 @@ alias ec='nvim ~/.dotfiles/home/files/zshrc'
 alias sc='source ~/.dotfiles/home/files/zshrc'
 
 # SOPS
-alias se="sops --encrypt --age $(cat $SOPS_AGE_KEY_FILE |grep -oP "public key: \K(.*)") --in-place" # then name file
-alias sd="sops --decrypt --age $(cat $SOPS_AGE_KEY_FILE |grep -oP "public key: \K(.*)") --in-place"
+# alias se="sops --encrypt --age $(cat $SOPS_AGE_KEY_FILE |grep -oP "public key: \K(.*)") --in-place" # then name file
+# alias sd="sops --decrypt --age $(cat $SOPS_AGE_KEY_FILE |grep -oP "public key: \K(.*)") --in-place"
 
 
 # Nix Shortcuts
