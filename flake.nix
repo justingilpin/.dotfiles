@@ -33,7 +33,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
 
-            # TODO replace ryan with your own username
+            # TODO replace justin with your own username
             home-manager.users.justin = import ./home/default.nix;
 
             # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix

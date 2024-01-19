@@ -5,7 +5,7 @@ neofetch # remove pkg count for more speed
 
 # export SOPS_AGE_KEY_FILE=$HOME/.config/sops/age/keys.txt
 export EDITOR=code
-BROWSER=brave
+BROWSER=firefox
 # History in cache directory:
 HISTSIZE=10000
 SAVEHIST=10000
@@ -123,3 +123,5 @@ eval "$(starship init zsh)"
 
 # Load zsh-syntax-highlighting; should be last.
 #source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+#
+

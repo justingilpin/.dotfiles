@@ -40,7 +40,7 @@
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
-  systemd.services.systemd-udevd.restartIfChanged = false;
+  systemd.services.systemd-udevd.restartIfChanged = true;
   # Set your time zone.
   time.timeZone = "Asia/Manila";
   # time.timeZone = "America/New_York";
@@ -67,6 +67,7 @@
   programs.zsh.enable = true; # configured in /modules/shell
   environment.shells = with pkgs; [ zsh ]; # Many programs look if user is a 'normal' user
   environment.binsh = "${pkgs.dash}/bin/dash";
+  # users.defaultUserShell = pkgs.zsh;
   # Also check that user has shell enabled
 
   # Enable the Plasma 5 Desktop Environment.
@@ -98,6 +99,7 @@
       obsidian
     ];
     shell = pkgs.zsh;
+    useDefaultShell =true;
     openssh.authorizedKeys.keys = [
     # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
   ];
