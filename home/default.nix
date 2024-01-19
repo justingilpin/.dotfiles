@@ -115,7 +115,7 @@
         #-------Favorite Software-------#
  #       gimp-with-plugins
  #       deluge-gtk
- #       lf # file manager | ranger replacement
+        lf # file manager | ranger replacement
  #       gperftools # TCMalloc for development 
         neofetch
  #       mpd-small
