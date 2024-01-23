@@ -73,7 +73,7 @@
   # Enable the Plasma 5 Desktop Environment.
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
-  
+  services.xserver.desktopManager.wallpaper.mode = "fill";
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";

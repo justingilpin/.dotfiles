@@ -9,14 +9,15 @@
     #./desktop
     #./devel
     #./media
-   # nix-colors.homeManagerModule
+    #nix-colors.homeManagerModule
    ./../modules/nvim
 #  ./../modules/nvim-ide
   ];
 
- # colorScheme = nix-colors.colorSchemes.gruvbox-dark-hard;
+  # colorScheme = nix-colors.colorSchemes.gruvbox-dark-hard;
 
   programs.home-manager.enable = true;
+  home.file.".background-image".source = ./images/oceansbg.jpg;
 #  programs.vscode = {
 #  enable = true;
 #  extensions = with pkgs.vscode-extensions; [
@@ -58,7 +59,7 @@
       '';
       oh-my-zsh = {
         enable = true;
-    #    theme = "robbyrussell";
+     #   theme = "robbyrussell";
         plugins = [ "python" ];
       };
     }; 
@@ -119,16 +120,18 @@
  #       gperftools # TCMalloc for development 
         neofetch
  #       mpd-small
- #       discord
+        discord
  #       pulseaudio
  #       pavucontrol
  #       openvpn
  #       xfce.thunar # file manager
  #       sioyek # pdf viewer
 #        conda
-#        obsidian
- #       vlc
- #       lutris
+        libreoffice-still
+        obsidian
+        vlc
+        lutris
+        feh
 #        restic
         #------------ZSH----------------#
         starship
@@ -174,7 +177,7 @@
 #    nixpkgs.overlays = [
 #      (
 #        self: super: {
-   #       libby = super.callPackage ../packages/libby/default.nix {};
+#          libby = super.callPackage ../packages/libby/default.nix {};
 #        }
 #      ) 
 #    ];
