@@ -85,7 +85,8 @@ alias sc='source ~/.dotfiles/home/files/zshrc'
 
 
 # Nix Shortcuts
-alias rebuild-laptop='cd ~/.dotfiles/;sudo nixos-rebuild switch --flake .#fibonacci' # builds machine
+alias rebuild-laptop='cd ~/.dotfiles/;sudo nixos-rebuild switch --flake .#fibonacci' # rebuilds laptop machine
+alias rebuild-desktop='cd ~/.dotfiles/;sudo nixos-rebuild switch --flake .#sekota' # rebuilds desktop machine
 alias cefi='sudo nix-env --delete-generations old --profile /nix/var/nix/profiles/system;sudo /nix/var/nix/profiles/system/bin/switch-to-configuration switch' # Clean EFI when disk is full 
 alias train='vimtutor'
 alias aigraphics='export NIXPKGS_ALLOW_UNFREE=1;nvidia-offload nix-shell;nvidia-offload bash webui.sh --skip-torch-cuda-test --precision full --no-half'
