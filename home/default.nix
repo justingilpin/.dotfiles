@@ -47,7 +47,6 @@
 #    }
 #  ];
 #  };
-
   programs.zsh = { 
       enable = true;
       enableCompletion = true;
@@ -63,6 +62,7 @@
         plugins = [ "python" ];
       };
     }; 
+
   programs.vscode = {
   enable = true;
   extensions = with pkgs.vscode-extensions; [
@@ -126,7 +126,6 @@
  #       openvpn
  #       xfce.thunar # file manager
  #       sioyek # pdf viewer
-#        conda
         libreoffice-still
         obsidian
         vlc
