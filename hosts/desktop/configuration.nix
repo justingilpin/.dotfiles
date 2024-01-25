@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./nvidia.nix
     ];
 
   nixpkgs = {
@@ -44,8 +45,8 @@
   systemd.services.NetworkManager-wait-online.enable = false; 
   
   # Set your time zone.
-  #time.timeZone = "Asia/Manila";
-  time.timeZone = "America/New_York";
+  time.timeZone = "Asia/Manila";
+  #time.timeZone = "America/New_York";
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -91,6 +92,12 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.justin = {
     isNormalUser = true;
@@ -98,7 +105,10 @@
     packages = with pkgs; [
       zoom-us
       tailscale
+      steam
       obsidian
+      heroic
+      prismlauncher
     ];
    shell = pkgs.zsh;
    useDefaultShell =true;
