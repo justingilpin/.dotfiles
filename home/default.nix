@@ -11,6 +11,7 @@
     #./media
     #nix-colors.homeManagerModule
    ./../modules/nvim
+#   ./../modules/plasma
 #  ./../modules/nvim-ide
   ];
 
