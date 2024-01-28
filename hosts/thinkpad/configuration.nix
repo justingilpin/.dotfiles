@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./e15.nix
+#      ./../../modules/plasma
     ];
 
   nixpkgs = {
@@ -100,6 +101,7 @@
       zoom-us
       tailscale
       obsidian
+      plasma
     ];
     shell = pkgs.zsh;
     useDefaultShell =true;
