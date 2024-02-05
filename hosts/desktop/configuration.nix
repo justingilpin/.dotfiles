@@ -145,7 +145,7 @@
   ];
 
 
-  # mount cifs truenas scale 
+  # mount cifs truenas scale need cifs-utils package
     fileSystems."/mnt/alliance" = {
     device = "//192.168.88.156/Alliance/";
     fsType = "cifs";
