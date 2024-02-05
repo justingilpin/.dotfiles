@@ -41,7 +41,7 @@
     };
 
   fileSystems."/mnt/m2storage" =
-    { device = "/dev/disk/by-uuid/027E11627E115031";
+    { device = "/dev/disk/by-uuid/58BE882EBE88072A";
       fsType = "ntfs3";
     };
 

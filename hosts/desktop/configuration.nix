@@ -36,6 +36,7 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.supportedFilesystems = [ "ntfs" ]; # allows NTFS support at boot
 
   networking.hostName = "seykota"; # Define your hostname.
   # Pick only one of the below networking options.
