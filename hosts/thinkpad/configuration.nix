@@ -36,6 +36,7 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.supportedFilesystems = [ "ntfs" ]; # allows NTFS at boot
 
   networking.hostName = "fibonacci"; # Define your hostname.
   # Pick only one of the below networking options.
@@ -101,7 +102,6 @@
       zoom-us
       tailscale
       obsidian
-      plasma
     ];
     shell = pkgs.zsh;
     useDefaultShell =true;
@@ -120,7 +120,19 @@
     alacritty
     kitty
     firefox
+    cifs-utils # needed for mounting samba shares
   ];
+
+  # mount cifs truenas scale need cifs-utils package
+    fileSystems."/mnt/alliance" = {
+    device = "//192.168.88.156/Alliance/";
+    fsType = "cifs";
+    options = let
+      # this line prevents hanging on network split
+      automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
+
+    in ["${automount_opts},credentials=/etc/nixos/smb-secrets"];
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
