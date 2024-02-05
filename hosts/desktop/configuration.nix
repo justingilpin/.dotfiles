@@ -41,7 +41,10 @@
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
-  # Fixes desktop error when rebuilding Nixos
+  # NTP Daemon for clock
+ # services.ntp.enable = true;
+
+# Fixes desktop error when rebuilding Nixos
   systemd.services.NetworkManager-wait-online.enable = false; 
   
   # Set your time zone.
@@ -127,6 +130,7 @@
     alacritty
     kitty
     firefox
+    gnome.gnome-disk-utility # used for auto mounting
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

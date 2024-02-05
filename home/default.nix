@@ -132,6 +132,11 @@
         vlc
         lutris
         feh
+	vivaldi
+	tor
+	tor-browser
+	ffmpeg-headless # codex for video streaming
+
 #        restic
         #------------ZSH----------------#
         starship

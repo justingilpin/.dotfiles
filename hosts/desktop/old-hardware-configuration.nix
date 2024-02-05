@@ -8,7 +8,7 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
@@ -25,26 +25,6 @@
       fsType = "vfat";
     };
 
-  fileSystems."/mnt/ssdstorage" =
-    { device = "/dev/disk/by-uuid/887C874A7C8731CC";
-      fsType = "ntfs3";
-    };
-
-  fileSystems."/mnt/storage" =
-    { device = "/dev/disk/by-uuid/34E2AD0DE2ACD480";
-      fsType = "ntfs3";
-    };
-
-  fileSystems."/mnt/windows" =
-    { device = "/dev/disk/by-uuid/8644AF8B44AF7C95";
-      fsType = "ntfs3";
-    };
-
-  fileSystems."/mnt/m2storage" =
-    { device = "/dev/disk/by-uuid/027E11627E115031";
-      fsType = "ntfs3";
-    };
-
   swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -53,7 +33,6 @@
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp42s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.tailscale0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
