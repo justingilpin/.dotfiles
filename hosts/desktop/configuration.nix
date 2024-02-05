@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./nvidia.nix
+     # ./cifsmount.nix
     ];
 
   nixpkgs = {
@@ -92,6 +93,15 @@
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
+
+
+
+
+
+
+
+
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -131,7 +141,21 @@
     kitty
     firefox
     gnome.gnome-disk-utility # used for auto mounting
+    cifs-utils # needed for mounting samba shares
   ];
+
+
+  # mount cifs truenas scale 
+    fileSystems."/mnt/alliance" = {
+    device = "//192.168.88.156/Alliance/";
+    fsType = "cifs";
+    options = let
+      # this line prevents hanging on network split
+      automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
+
+    in ["${automount_opts},credentials=/etc/nixos/smb-secrets"];
+  };
+
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
