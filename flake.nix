@@ -43,6 +43,15 @@
     };
 
     nixosConfigurations = {
+      server = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/server/configuration.nix
+        ];
+      };
+    };
+
+    nixosConfigurations = {
       # TODO please change the hostname to your own
       seykota = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
