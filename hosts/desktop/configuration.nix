@@ -50,10 +50,11 @@
   systemd.services.NetworkManager-wait-online.enable = false; 
   
   # Set your time zone.
-  time.timeZone = "Asia/Hong_Kong";
+  time.timeZone = "Etc/GMT+0"; # Temperary fix to get correct time
+  #time.timeZone = "Asia/Manila";
   #time.timeZone = "America/New_York";
   #time.hardwareClockInLocalTime = true;
-  services.localtimed.enable = true;
+  # services.localtimed.enable = true;
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
