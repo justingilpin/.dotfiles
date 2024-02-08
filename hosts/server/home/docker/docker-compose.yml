@@ -2,7 +2,7 @@
 version: "3.5"
 services:
   code-server:
-    platform: linux/i686
+    #   platform:
     image: lscr.io/linuxserver/code-server:latest
     container_name: code-server
     volumes:

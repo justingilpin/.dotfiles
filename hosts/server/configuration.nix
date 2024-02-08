@@ -62,28 +62,36 @@
   # Enable Tailscale
   services.tailscale.enable = true;
 
+  # Shell
+  programs.zsh.enable = true;
+  environment.shells = with pkgs; [ zsh ];
+  environment.binsh = "${pkgs.dash}/bin/dash";
+  users.defaultUserShell = pkgs.zsh;
+  # Also check that user has shell enabled
+
+
   # Enable Docker Containers
-
+  virtualisation.docker.enable = true;
   # Docker Containers - Create /data/docker folder
-  systemd.tmpfiles.rules = [
-    "d /data/docker 0750 root root -"
-  ];
+#  systemd.tmpfiles.rules = [
+#    "d /data/docker 0750 root root -"
+#  ];
 
-  virtualisation.oci-containers.backend = "docker";
-  virtualisation.docker = {
-    enable = true;
-    enableOnBoot = true;
+#  virtualisation.oci-containers.backend = "docker";
+#  virtualisation.docker = {
+#    enable = true;
+#    enableOnBoot = true;
    # storageDriver = "zfs";
 
-    rootless = {
-      enable = false;
+#    rootless = {
+#      enable = false;
       # setSocketVariable = true;
-    };
+#    };
 
-    daemon.settings = {
-      experimental = true;
-    };
-  };
+#    daemon.settings = {
+#      experimental = true;
+#    };
+#  };
 
 
   # Configure keymap in X11
@@ -108,6 +116,8 @@
     #  firefox
     #  tree
     ];
+    shell = pkgs.zsh;
+    useDefaultShell = true;
   };
 
   # List packages installed in system profile. To search, run:
@@ -128,40 +138,40 @@
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
+#  programs.gnupg.agent = {
+#    enable = true;
+#    enableSSHSupport = true;
+#  };
 
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
-  environment.etc."nextcloud-admin-pass".text = "test123";
-  services.nextcloud = {                
-    enable = true;                   
-    package = pkgs.nextcloud28;
+#  environment.etc."nextcloud-admin-pass".text = "test123";
+#  services.nextcloud = {                
+#    enable = true;                   
+#    package = pkgs.nextcloud28;
     # Instead of using pkgs.nextcloud28Packages.apps,
     # we'll reference the package version specified above
-    hostName = "nextcloud.tld";
-#    database.createLocally = true;
-    config = {
+#    hostName = "nextcloud.tld";
+   # database.createLocally = true;
+#    config = {
 #      dbtype = "pgsql";
-      adminpassFile = "/etc/nextcloud-admin-pass";
-    };
+#      adminpassFile = "/etc/nextcloud-admin-pass";
+#    };
    # extraApps = {
    #   inherit (config.services.nextcloud.package.packages.apps) news contacts calendar tasks;
    # };
    # extraAppsEnable = true;
-  };
+#  };
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 22 80 443 ];
+#  networking.firewall.allowedTCPPorts = [ 22 80 443 ];
   # networking.firewall.trustedInterfaces = [ "docker0" ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  networking.firewall.enable = true;
+  networking.firewall.enable = false;
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
