@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+#      ./dashy.nix
     ];
   
   nixpkgs = {
@@ -61,7 +62,29 @@
   # Enable Tailscale
   services.tailscale.enable = true;
 
-  
+  # Enable Docker Containers
+
+  # Docker Containers - Create /data/docker folder
+  systemd.tmpfiles.rules = [
+    "d /data/docker 0750 root root -"
+  ];
+
+  virtualisation.oci-containers.backend = "docker";
+  virtualisation.docker = {
+    enable = true;
+    enableOnBoot = true;
+   # storageDriver = "zfs";
+
+    rootless = {
+      enable = false;
+      # setSocketVariable = true;
+    };
+
+    daemon.settings = {
+      experimental = true;
+    };
+  };
+
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -80,7 +103,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.justin = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "networkmanager" "docker" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
     #  firefox
     #  tree
@@ -92,11 +115,14 @@
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     neovim
+    lemonade
     wget
     git
     git-crypt
     tailscale
     cifs-utils 
+    docker-compose
+    docker
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -112,11 +138,30 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
+  environment.etc."nextcloud-admin-pass".text = "test123";
+  services.nextcloud = {                
+    enable = true;                   
+    package = pkgs.nextcloud28;
+    # Instead of using pkgs.nextcloud28Packages.apps,
+    # we'll reference the package version specified above
+    hostName = "nextcloud.tld";
+#    database.createLocally = true;
+    config = {
+#      dbtype = "pgsql";
+      adminpassFile = "/etc/nextcloud-admin-pass";
+    };
+   # extraApps = {
+   #   inherit (config.services.nextcloud.package.packages.apps) news contacts calendar tasks;
+   # };
+   # extraAppsEnable = true;
+  };
+
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 22 80 443 ];
+  # networking.firewall.trustedInterfaces = [ "docker0" ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  networking.firewall.enable = false;
+  networking.firewall.enable = true;
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
