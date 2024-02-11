@@ -1,0 +1,17 @@
+
+version: "3.5"
+services:
+  code-server:
+    #   platform:
+    image: lscr.io/linuxserver/code-server:latest
+    container_name: code-server
+    volumes:
+      - /programming:/config
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    ports:
+      - 8443:8443
+    restart: unless-stopped
+
