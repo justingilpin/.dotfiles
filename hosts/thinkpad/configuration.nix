@@ -9,7 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./e15.nix
-#      ./../../modules/plasma
+#      ./../../modules/nvim
     ];
 
   nixpkgs = {
@@ -102,6 +102,8 @@
       zoom-us
       tailscale
       obsidian
+      xclip
+      xsel
     ];
     shell = pkgs.zsh;
     useDefaultShell =true;
