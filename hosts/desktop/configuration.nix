@@ -125,6 +125,7 @@
       piper # mouse RGB
       meson # python building tool for ratbag
       ninja # another build tool
+      xcel
 #      openrgb-with-all-plugins
 #      openrgb-plugin-hardwaresync
 #      openrgb-plugin-effects
