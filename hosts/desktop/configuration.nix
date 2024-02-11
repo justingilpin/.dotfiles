@@ -96,15 +96,6 @@
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
-
-
-
-
-
-
-
-
-
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -113,6 +104,11 @@
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
   };
+
+  # Enable OpenRGB
+  services.hardware.openrgb.enable = true;
+  services.hardware.openrgb.motherboard = "amd";
+
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.justin = {
@@ -125,6 +121,13 @@
       obsidian
       heroic
       prismlauncher
+      libratbag # mouse drivers
+      piper # mouse RGB
+      meson # python building tool for ratbag
+      ninja # another build tool
+#      openrgb-with-all-plugins
+#      openrgb-plugin-hardwaresync
+#      openrgb-plugin-effects
     ];
    shell = pkgs.zsh;
    useDefaultShell =true;
