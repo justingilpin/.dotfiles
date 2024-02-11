@@ -8,7 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-#      ./dashy.nix
+      ./cifs.nix
     ];
   
   nixpkgs = {
