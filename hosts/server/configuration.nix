@@ -133,6 +133,7 @@
     cifs-utils 
     docker-compose
     docker
+    sysstat
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
