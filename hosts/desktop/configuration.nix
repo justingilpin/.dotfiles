@@ -50,8 +50,8 @@
   systemd.services.NetworkManager-wait-online.enable = false; 
   
   # Set your time zone.
-  time.timeZone = "Etc/GMT+0"; # Temperary fix to get correct time
-  #time.timeZone = "Asia/Manila";
+  #time.timeZone = "Etc/GMT+0"; # Temperary fix to get correct time
+  time.timeZone = "Asia/Manila";
   #time.timeZone = "America/New_York";
   #time.hardwareClockInLocalTime = true;
   # services.localtimed.enable = true;
@@ -121,14 +121,8 @@
       obsidian
       heroic
       prismlauncher
-      libratbag # mouse drivers
-      piper # mouse RGB
-      meson # python building tool for ratbag
-      ninja # another build tool
-      xcel
-#      openrgb-with-all-plugins
-#      openrgb-plugin-hardwaresync
-#      openrgb-plugin-effects
+      xsel
+      xclip
     ];
    shell = pkgs.zsh;
    useDefaultShell =true;
