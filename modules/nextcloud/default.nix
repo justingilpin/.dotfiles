@@ -7,12 +7,12 @@
       dnsProvider = "cloudflare";
       # location of your CLOUDFLARE_DNS_API_TOKEN=[value]
       # https://www.freedesktop.org/software/systemd/man/latest/systemd.exec.html#EnvironmentFile=
-      environmentFile = "/REPLACE/WITH/YOUR/PATH";
+      environmentFile = "/etc/nixos/cloudflare";
     };
   };
   services = {
     nginx.virtualHosts = {
-      "YOUR.DOMAIN.NAME" = {
+      "nextcloud" = { # YOUR.DOMAIN.NAME
         forceSSL = true;
         enableACME = true;
         # Use DNS Challenege.
@@ -22,7 +22,7 @@
     # 
     nextcloud = {
       enable = true;
-      hostName = "YOUR.DOMAIN.NAME";
+      hostName = "nextcloud"; # YOUR.DOMAIN.NAME
       # Need to manually increment with every major upgrade.
       package = pkgs.nextcloud28;
       # Let NixOS install and configure the database automatically.
