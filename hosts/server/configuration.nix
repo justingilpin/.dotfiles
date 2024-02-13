@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./cifs.nix
+      #./../../modules/nextcloud
     ];
   
   nixpkgs = {
@@ -30,10 +31,6 @@
 
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
-  # boot.loader.grub.efiSupport = true;
-  # boot.loader.grub.efiInstallAsRemovable = true;
-  # boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  # Define on which hard drive you want to install Grub.
   boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
 
   networking.hostName = "jim_simons"; # Define your hostname.
@@ -43,23 +40,8 @@
 
   # Set your time zone.
   # time.timeZone = "Europe/Amsterdam";
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  #   useXkbConfig = true; # use xkb.options in tty.
-  # };
-
-  # Enable the X11 windowing system.
-  # services.xserver.enable = true;
   
-  # Enable Tailscale
+  # Tailscale Mesh VPN 
   services.tailscale.enable = true;
 
   # Shell
@@ -69,63 +51,19 @@
   users.defaultUserShell = pkgs.zsh;
   # Also check that user has shell enabled
 
-
   # Enable Docker Containers
   virtualisation.docker.enable = true;
-  # Docker Containers - Create /data/docker folder
-#  systemd.tmpfiles.rules = [
-#    "d /data/docker 0750 root root -"
-#  ];
 
-#  virtualisation.oci-containers.backend = "docker";
-#  virtualisation.docker = {
-#    enable = true;
-#    enableOnBoot = true;
-   # storageDriver = "zfs";
-
-#    rootless = {
-#      enable = false;
-      # setSocketVariable = true;
-#    };
-
-#    daemon.settings = {
-#      experimental = true;
-#    };
-#  };
-
-
-  # Configure keymap in X11
-  # services.xserver.xkb.layout = "us";
-  # services.xserver.xkb.options = "eurosign:e,caps:escape";
-
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
-
-  # Enable sound.
-  # sound.enable = true;
-  # hardware.pulseaudio.enable = true;
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.justin = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "docker" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [
-    #  firefox
-    #  tree
-    ];
+    packages = with pkgs; [ ];
     shell = pkgs.zsh;
     useDefaultShell = true;
   };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     neovim
-    lemonade
     wget
     git
     git-crypt
@@ -134,45 +72,26 @@
     docker-compose
     docker
     sysstat
+    clipboard-jh
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-#  programs.gnupg.agent = {
-#    enable = true;
-#    enableSSHSupport = true;
-#  };
-
-  # List services that you want to enable:
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
-#  environment.etc."nextcloud-admin-pass".text = "test123";
-#  services.nextcloud = {                
-#    enable = true;                   
-#    package = pkgs.nextcloud28;
-    # Instead of using pkgs.nextcloud28Packages.apps,
-    # we'll reference the package version specified above
-#    hostName = "nextcloud.tld";
-   # database.createLocally = true;
-#    config = {
-#      dbtype = "pgsql";
-#      adminpassFile = "/etc/nextcloud-admin-pass";
-#    };
-   # extraApps = {
-   #   inherit (config.services.nextcloud.package.packages.apps) news contacts calendar tasks;
-   # };
-   # extraAppsEnable = true;
-#  };
-
   # Open ports in the firewall.
-#  networking.firewall.allowedTCPPorts = [ 22 80 443 ];
+  networking.firewall.allowedTCPPorts = [ 22 80 443 ];
   # networking.firewall.trustedInterfaces = [ "docker0" ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  networking.firewall.enable = false;
+  networking.firewall.enable = true;
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
