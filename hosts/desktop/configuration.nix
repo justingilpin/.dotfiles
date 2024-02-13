@@ -44,9 +44,9 @@
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
   # NTP Daemon for clock
- # services.ntp.enable = true;
+  # services.ntp.enable = true;
 
-# Fixes desktop error when rebuilding Nixos
+  # Fixes desktop error when rebuilding Nixos
   systemd.services.NetworkManager-wait-online.enable = false; 
   
   # Set your time zone.
