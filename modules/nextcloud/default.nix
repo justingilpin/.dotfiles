@@ -12,9 +12,9 @@
   };
   services = {
     nginx.virtualHosts = {
-      "nextcloud" = { # YOUR.DOMAIN.NAME
+      "local.nextcloud" = { # YOUR.DOMAIN.NAME
         forceSSL = true;
-        enableACME = true;
+        enableACME = true; 
         # Use DNS Challenege.
         acmeRoot = null;
       };
@@ -22,11 +22,11 @@
     # 
     nextcloud = {
       enable = true;
-      hostName = "nextcloud"; # YOUR.DOMAIN.NAME
+      hostName = "local.nextcloud"; # YOUR.DOMAIN.NAME
       # Need to manually increment with every major upgrade. 
       package = pkgs.nextcloud28;
       # Optional Setting: Point directory to storage path
-      datadir = "/mnt/nextcloud"
+#      datadir = "/mnt/nextcloud";
       # Let NixOS install and configure the database automatically.
       database.createLocally = true;
       # Let NixOS install and configure Redis caching automatically.
@@ -52,7 +52,7 @@
         overwriteProtocol = "https";
         defaultPhoneRegion = "US";
         dbtype = "pgsql";
-        adminuser = "justin";
+        adminuser = "admin";
         adminpassFile = "/etc/nixos/secrets";
       };
       # Suggested by Nextcloud's health check.
