@@ -23,8 +23,10 @@
     nextcloud = {
       enable = true;
       hostName = "nextcloud"; # YOUR.DOMAIN.NAME
-      # Need to manually increment with every major upgrade.
+      # Need to manually increment with every major upgrade. 
       package = pkgs.nextcloud28;
+      # Optional Setting: Point directory to storage path
+      datadir = "/mnt/nextcloud"
       # Let NixOS install and configure the database automatically.
       database.createLocally = true;
       # Let NixOS install and configure Redis caching automatically.
