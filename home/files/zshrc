@@ -91,6 +91,7 @@ alias rebuild-server='cd ~/.dotfiles/;sudo nixos-rebuild switch --flake .#server
 alias cefi='sudo nix-env --delete-generations old --profile /nix/var/nix/profiles/system;sudo /nix/var/nix/profiles/system/bin/switch-to-configuration switch' # Clean EFI when disk is full 
 alias train='vimtutor'
 alias aigraphics='export NIXPKGS_ALLOW_UNFREE=1;nvidia-offload nix-shell;nvidia-offload bash webui.sh --skip-torch-cuda-test --precision full --no-half'
+alias nixgarbage="nix-collect-garbage -d"
 
 # Kitty / Enter root@whatever after alias to prevent xterm errors
 alias kssh='kitty +kitten ssh'

@@ -2,39 +2,45 @@
   # Based on https://carjorvaz.com/posts/the-holy-grail-nextcloud-setup-made-easy-by-nixos/
   security.acme = {
     acceptTerms = true;
+#    certs.localhost.listenHTTP = ":8080"; # net setting
     defaults = {
       email = "justin.lee.gilpin@gmail.com";
-      dnsProvider = "cloudflare";
+#      dnsProvider = "cloudflare";
       # location of your CLOUDFLARE_DNS_API_TOKEN=[value]
       # https://www.freedesktop.org/software/systemd/man/latest/systemd.exec.html#EnvironmentFile=
-      environmentFile = "/etc/nixos/cloudflare";
+#      environmentFile = "/etc/nixos/cloudflare";
     };
   };
   services = {
     nginx.virtualHosts = {
-      "local.nextcloud" = { # YOUR.DOMAIN.NAME
-        forceSSL = true;
-        enableACME = true; 
+#      "localhost" = { # YOUR.DOMAIN.NAME
+#        "localhost".listen = [ { addr = "127.0.0.1"; port = 8080; } ];
+#        forceSSL = true;
+#        enableACME = true; 
         # Use DNS Challenege.
-        acmeRoot = null;
-      };
+#        acmeRoot = null;
+#      };
     };
     # 
     nextcloud = {
       enable = true;
-      hostName = "local.nextcloud"; # YOUR.DOMAIN.NAME
+      hostName = "localhost"; # YOUR.DOMAIN.NAME
       # Need to manually increment with every major upgrade. 
       package = pkgs.nextcloud28;
       # Optional Setting: Point directory to storage path
-#      datadir = "/mnt/nextcloud";
       # Let NixOS install and configure the database automatically.
       database.createLocally = true;
       # Let NixOS install and configure Redis caching automatically.
       configureRedis = true;
       # Increase the maximum file upload size.
       maxUploadSize = "16G";
-      https = true;
+#      https = true;
       autoUpdateApps.enable = true;
+      extraOptions = {
+        trusted_domains = ["192.168.88.62"];
+        default_phone_region = "US";
+#        overwriteprotocol = "https";
+      };
       extraAppsEnable = true;
       extraApps = with config.services.nextcloud.package.packages.apps; {
         # List of apps we want to install and are already packaged in
@@ -49,11 +55,9 @@
         };
       };
       config = {
-        overwriteProtocol = "https";
-        defaultPhoneRegion = "US";
         dbtype = "pgsql";
-        adminuser = "admin";
-        adminpassFile = "/etc/nixos/secrets";
+        adminuser = "justin";
+        adminpassFile = "${pkgs.writeText "adminpass" "test123"}";
       };
       # Suggested by Nextcloud's health check.
       phpOptions."opcache.interned_strings_buffer" = "16";
