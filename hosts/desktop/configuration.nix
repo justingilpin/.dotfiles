@@ -123,6 +123,8 @@
       prismlauncher
       xsel
       xclip
+      dig
+      go
     ];
    shell = pkgs.zsh;
    useDefaultShell =true;
