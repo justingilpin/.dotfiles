@@ -6,7 +6,7 @@
 # github.com/arsham/figurine
 # Manually install or ancible
 # go install github.com/arsham/figurine@latest
-# move go to .go
+# mv go .go
 /home/justin/.go/bin/figurine -f "3d.flf" $HOST 
 # export SOPS_AGE_KEY_FILE=$HOME/.config/sops/age/keys.txt
 export EDITOR=code

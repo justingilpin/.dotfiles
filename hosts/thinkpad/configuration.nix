@@ -104,6 +104,7 @@
       obsidian
       xclip
       xsel
+      go
     ];
     shell = pkgs.zsh;
     useDefaultShell =true;
