@@ -2,23 +2,12 @@
   # Based on https://carjorvaz.com/posts/the-holy-grail-nextcloud-setup-made-easy-by-nixos/
   security.acme = {
     acceptTerms = true;
-    preliminarySelfsigned = false;
-    defaults.email = "justin.lee.gilpin@gmail.com";
-    certs."ow0w.com" = {
+    defaults = {
+      email = "justin.lee.gilpin@gmail.com";
       dnsProvider = "cloudflare";
-      dnsResolver = "1.1.1.1:53";
-      credentialsFile = "/home/justin/cloudflare";
-      dnsPropagationCheck = true;
-      domain = "ow0w.com";
-      extraDomainNames = [ "*.ow0w.com" ];
-      reloadServices = [ "nginx"];
-
-    #defaults = {
-      #email = "justin.lee.gilpin@gmail.com";
-      #dnsProvider = "cloudflare";
       # location of your CLOUDFLARE_DNS_API_TOKEN=[value]
       # https://www.freedesktop.org/software/systemd/man/latest/systemd.exec.html#EnvironmentFile=
-      #environmentFile = "/home/justin/cloudflare";
+      environmentFile = "/home/justin/cloudflare";
     };
   };
   services = {
