@@ -37,7 +37,7 @@
       extraOptions = {
         trusted_domains = ["192.168.88.62" "ow0w.com"];
         default_phone_region = "US";
-#        overwriteprotocol = "https";
+        overwriteprotocol = "https";
       };
       extraAppsEnable = true;
       extraApps = with config.services.nextcloud.package.packages.apps; {
