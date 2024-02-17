@@ -1,0 +1,5 @@
+{
+	"domain": "www.ow0w.com",
+	"certUrl": "https://acme-v02.api.letsencrypt.org/acme/cert/03a67c26179cae981d65ee636122e98e8ced",
+	"certStableUrl": "https://acme-v02.api.letsencrypt.org/acme/cert/03a67c26179cae981d65ee636122e98e8ced"
+}
