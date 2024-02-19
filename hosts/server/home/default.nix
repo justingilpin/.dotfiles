@@ -6,9 +6,12 @@
 
   imports = [
  #   ./../../../modules/nvim
+    "${fetchTarball "https://github.com/msteen/nixos-vscode-server/tarball/master"}/modules/vscode-server/home.nix"
   ];
 
   programs.home-manager.enable = true;
+
+  services.vscode-server.enable = true;
 
   programs.zsh = { 
       enable = true;

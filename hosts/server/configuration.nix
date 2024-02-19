@@ -11,9 +11,10 @@
       ./cifs.nix
       ./../../modules/nextcloud
       ./../../modules/jellyfin
-      ./../../modules/code-server
+#      ./../../modules/code-server
     ];
-  
+#  services.vscode-server.enable = true;
+
   nixpkgs = {
     config = {
       allowUnfree = true;
