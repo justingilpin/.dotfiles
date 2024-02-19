@@ -1,6 +1,7 @@
 { config, lib, pkgs, modulesPath, ... }:
 {
-
+# blkid 
+# Will list all the disks by uuid
   fileSystems."/mnt/ssdstorage" =
     { device = "/dev/disk/by-uuid/887C874A7C8731CC"; #887C874A7C8731CC
       fsType = "ntfs3";
