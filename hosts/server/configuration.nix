@@ -11,6 +11,7 @@
       ./cifs.nix
       ./../../modules/nextcloud
       ./../../modules/jellyfin
+      ./../../modules/code-server
     ];
   
   nixpkgs = {
