@@ -8,41 +8,21 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/6d55257b-e45e-4c2c-8602-a6e234d5be42";
+    { device = "/dev/disk/by-uuid/4b67831b-ce1a-44da-8a81-2291fb5ece92";
       fsType = "ext4";
     };
 
-  boot.initrd.luks.devices."luks-f7d0c416-894c-4b74-8a63-061ff4513e3d".device = "/dev/disk/by-uuid/f7d0c416-894c-4b74-8a63-061ff4513e3d";
+  boot.initrd.luks.devices."luks-d35d7a32-bc3d-434b-9f7c-db49b80da012".device = "/dev/disk/by-uuid/d35d7a32-bc3d-434b-9f7c-db49b80da012";
 
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/B0AB-CECA";
       fsType = "vfat";
-    };
-
-  fileSystems."/mnt/ssdstorage" =
-    { device = "/dev/disk/by-uuid/887C874A7C8731CC";
-      fsType = "ntfs3";
-    };
-
-  fileSystems."/mnt/storage" =
-    { device = "/dev/disk/by-uuid/34E2AD0DE2ACD480";
-      fsType = "ntfs3";
-    };
-
-  fileSystems."/mnt/windows" =
-    { device = "/dev/disk/by-uuid/8644AF8B44AF7C95";
-      fsType = "ntfs3";
-    };
-
-  fileSystems."/mnt/m2storage" =
-    { device = "/dev/disk/by-uuid/58BE882EBE88072A";
-      fsType = "ntfs3";
     };
 
   swapDevices = [ ];
@@ -53,7 +33,6 @@
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp42s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.tailscale0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
