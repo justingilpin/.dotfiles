@@ -10,6 +10,7 @@
       ./hardware-configuration.nix
       ./cifs.nix
       ./../../modules/nextcloud
+      ./../../modules/jellyfin
     ];
   
   nixpkgs = {
@@ -76,6 +77,9 @@
     clipboard-jh
     go
     traceroute
+    jellyfin
+    jellyfin-web
+    jellyfin-ffmpeg
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
