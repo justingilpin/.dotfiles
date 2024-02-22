@@ -138,6 +138,7 @@
       xclip
       dig
       go
+      vulkan-tools
 #      warp-terminal
     ];
    shell = pkgs.zsh;
