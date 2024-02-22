@@ -22,7 +22,10 @@
     nixpkgs.config.permittedInsecurePackages = [
     "electron-25.9.0"
   ];
-  
+
+  # A fix for warp-terminal. Waiting for official package
+#nixpkgs.config.allowUnsupportedSystem = true;
+
   nix = {
     settings = {
       # Enable flakes and new 'nix' command
@@ -135,6 +138,7 @@
       xclip
       dig
       go
+#      warp-terminal
     ];
    shell = pkgs.zsh;
    useDefaultShell =true;
