@@ -139,7 +139,7 @@
       dig
       go
 #      vulkan-tools
-      warp-terminal
+ #     warp-terminal
     ];
    shell = pkgs.zsh;
    useDefaultShell =true;
