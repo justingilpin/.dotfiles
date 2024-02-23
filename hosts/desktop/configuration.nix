@@ -24,7 +24,7 @@
   ];
 
   # A fix for warp-terminal. Waiting for official package
-#nixpkgs.config.allowUnsupportedSystem = true;
+  nixpkgs.config.allowUnsupportedSystem = true;
 
   nix = {
     settings = {
@@ -139,7 +139,7 @@
       dig
       go
 #      vulkan-tools
-#      warp-terminal
+      warp-terminal
     ];
    shell = pkgs.zsh;
    useDefaultShell =true;
@@ -174,6 +174,14 @@
 #    in ["${automount_opts},credentials=/etc/nixos/smb-secrets"];
 #  };
 
+#  (appimageTools.wrapType2 {
+#    name = "warp";
+#    src = fetchurl {
+#      url = "";
+#      sha256 = "sha256-/DZ6CCJOS/lm5hzBailLOtrUDRyOEzVBDKwYmlFpsU8=";
+#    };
+#    extraPkgs = pkgs: with pkgs; [ ];
+#  })
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
