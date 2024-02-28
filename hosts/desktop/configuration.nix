@@ -139,7 +139,9 @@
       xclip
       dig
       go
-#      vulkan-tools
+#      blender-hip # 3D Creation using HIP enabled in AMD.nix
+#      clinfo # OpenCL info
+#      gpu-viewer
  #     warp-terminal
     ];
    shell = pkgs.zsh;
