@@ -57,7 +57,7 @@
   #time.timeZone = "America/New_York";
 
   # Enable Hyprland edit config in home manager
-  wayland.windowManager.hyprland.enable = true;
+  programs.hyprland.enable = true;
 
   # Enable Tailscale
   services.tailscale.enable = true;
