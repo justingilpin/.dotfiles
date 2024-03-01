@@ -49,9 +49,6 @@
   time.timeZone = "Asia/Manila";
   # time.timeZone = "America/New_York";
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
   # Enable Tailscale
   services.tailscale.enable = true;
 

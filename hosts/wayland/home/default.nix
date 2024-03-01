@@ -126,8 +126,8 @@
 	webcord # discord replacement
 	grim # Capture images with wayland
 	slurp # Select a region in wayland compositor pairs with grim
-	gamescope # Use gamescope -- %command% in steam to help run proton games
 	gamemode
+	networkmanagerapplet
 
 #        restic
         #------------ZSH----------------#

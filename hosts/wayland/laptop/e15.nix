@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./../common/cpu/intel
+    ./../../common/cpu/intel
   ];
 
   services.throttled.enable = lib.mkDefault true;
