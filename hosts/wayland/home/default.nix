@@ -18,7 +18,7 @@
   # colorScheme = nix-colors.colorSchemes.gruvbox-dark-hard;
 
   programs.home-manager.enable = true;
-  home.file.".background-image".source = ./../../../home/images/oceansbg.jpg;
+#  home.file.".background-image".source = ./../../../home/images/oceansbg.jpg;
 
   programs.zsh = { 
       enable = true;
@@ -105,7 +105,7 @@
  #       gperftools # TCMalloc for development 
         neofetch
  #       mpd-small
-        discord
+        #discord
  #       pulseaudio
  #       pavucontrol
  #       openvpn
@@ -123,6 +123,11 @@
         # Wayland Tools
 	wofi
 	hyprpaper
+	webcord # discord replacement
+	grim # Capture images with wayland
+	slurp # Select a region in wayland compositor pairs with grim
+	gamescope # Use gamescope -- %command% in steam to help run proton games
+	gamemode
 
 #        restic
         #------------ZSH----------------#
