@@ -115,11 +115,14 @@
         obsidian
         vlc
         lutris
-        feh
 	vivaldi
 	tor
 	tor-browser
 	ffmpeg-headless # codex for video streaming
+
+        # Wayland Tools
+	wofi
+	hyprpaper
 
 #        restic
         #------------ZSH----------------#
