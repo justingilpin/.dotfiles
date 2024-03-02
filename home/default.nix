@@ -10,8 +10,8 @@
 
   programs.home-manager.enable = true;
 
-  home.file."~/.config/hypr/hyprland.config".source = ~/.dotfiles/home/files/hyprland.config;
-  home.file."~/.config/hypr/hyprpaper.config".source = ~/.dotfiles/home/files/hyprpaper.conig;
+#  home.file."~/.config/hypr/hyprland.config".source = ~/.dotfiles/home/files/hyprland.config;
+#  home.file."~/.config/hypr/hyprpaper.config".source = ~/.dotfiles/home/files/hyprpaper.conig;
 
   programs.zsh = { 
       enable = true;

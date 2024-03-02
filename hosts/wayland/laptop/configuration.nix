@@ -21,7 +21,13 @@
     nixpkgs.config.permittedInsecurePackages = [
     "electron-25.9.0"
   ];
-  
+
+  # Fonts
+  fonts.packages = with pkgs; [
+    jetbrains-mono
+    nerd-font-patcher
+  ];
+ 
   nix = {
     settings = {
       # Enable flakes and new 'nix' command
