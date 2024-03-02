@@ -5,20 +5,14 @@
   home.stateVersion = "23.05";
 
   imports = [
-    #./gtk
-    #./desktop
-    #./devel
-    #./media
-    #nix-colors.homeManagerModule
    ./../../../modules/nvim
-#   ./../modules/plasma
-#  ./../modules/nvim-ide
   ];
 
-  # colorScheme = nix-colors.colorSchemes.gruvbox-dark-hard;
 
   programs.home-manager.enable = true;
-#  home.file.".background-image".source = ./../../../home/images/oceansbg.jpg;
+
+#  home.file."~/.config/hypr/hyprland.conf".source = ~/.dotfiles/home/files/hyprland.conf;
+#  home.file."~/.config/hypr/hyprpaper.conf".source = ~/.dotfiles/home/files/hyprpaper.conf;
 
   programs.zsh = { 
       enable = true;
@@ -45,30 +39,30 @@
   ];
 };
 
-  wayland.windowManager.hyprland.settings = {
-    "$mod" = "SUPER";
-    bind =
-      [
-        "$mod, F, exec, firefox"
-        ", Print, exec, grimblast copy area"
-      ]
-      ++ (
-        # workspaces
-        # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
-        builtins.concatLists (builtins.genList (
-            x: let
-              ws = let
-                c = (x + 1) / 10;
-              in
-                builtins.toString (x + 1 - (c * 10));
-            in [
-              "$mod, ${ws}, workspace, ${toString (x + 1)}"
-              "$mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
-            ]
-          )
-          10)
-      );
-  };
+#  wayland.windowManager.hyprland.settings = {
+#    "$mod" = "SUPER";
+#    bind =
+#      [
+#        "$mod, F, exec, firefox"
+#        ", Print, exec, grimblast copy area"
+#      ]
+#      ++ (
+#        # workspaces
+#        # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
+#        builtins.concatLists (builtins.genList (
+#            x: let
+#              ws = let
+#                c = (x + 1) / 10;
+#              in
+#                builtins.toString (x + 1 - (c * 10));
+#            in [
+#              "$mod, ${ws}, workspace, ${toString (x + 1)}"
+#              "$mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
+#            ]
+#          )
+#          10)
+#      );
+#  };
 
 
 
