@@ -73,6 +73,8 @@
 	tor
 	tor-browser
 	ffmpeg-headless # codex for video streaming
+	gamemode
+
 
         #------------ZSH----------------#
         starship
