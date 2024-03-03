@@ -100,7 +100,10 @@
 	dunst
 	pavucontrol
 	wlogout
-
+	pipewire_0_2
+	sunshine
+	moonlight-qt
+	avahi
 #        restic
         #------------ZSH----------------#
         starship

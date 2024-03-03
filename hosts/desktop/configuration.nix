@@ -25,7 +25,7 @@
   ];
 
   # A fix for warp-terminal. Waiting for official package
-  nixpkgs.config.allowUnsupportedSystem = true;
+#  nixpkgs.config.allowUnsupportedSystem = true;
 
   nix = {
     settings = {
@@ -71,9 +71,6 @@
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
   # Enable Tailscale
   services.tailscale.enable = true;
 
@@ -85,9 +82,40 @@
   # Also check that user has shell enabled
 
   # Enable the Plasma 5 Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.enable = true; # X11
+#  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.displayManager.sddm.wayland.enable = true; # Enable Wayland commit out for X11
   services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.displayManager.defaultSession ="plasmawayland"; # Enable Wayland
   services.xserver.desktopManager.wallpaper.mode = "fill";
+
+  # Enable Plasma 6
+#  services.xserver.enable = true;
+#  services.xserver.displayManager.sddm.enable = true;
+#  services.xserver.desktopManager.plasma6.enable = true;
+#  services.xserver.displayManager.defaultSession = "plasma"; #'plasmax11' for X11 default plasma
+
+#  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+#    plasma-browser-integration
+#    konsole
+#    oxygen
+#  ];
+
+  security.wrappers.sunshine = {
+    owner = "root";
+    group = "root";
+    capabilities = "cap_sys_admin+p";
+    source = "${pkgs.sunshine}/bin/sunshine";
+  };
+
+  systemd.user.services.sunshine =
+    {
+      description = "sunshine";
+      wantedBy = [ "graphical-session.target" ];
+      serviceConfig = {
+      ExecStart = "${config.security.wrapperDir}/sunshine";
+    };
+  };
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -139,6 +167,17 @@
       xclip
       dig
       go
+      sunshine
+      ffmpeg #encoder
+      mesa
+
+      # Wayland
+      wlroots
+      wlrctl
+#      vaapiVdpau #encoder
+      vaapi-intel-hybrid #encoder
+#      nv-codec-headers-12 # encoder
+      x265 # encoder
 #      blender-hip # 3D Creation using HIP enabled in AMD.nix
 #      clinfo # OpenCL info
 #      gpu-viewer
