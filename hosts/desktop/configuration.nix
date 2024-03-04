@@ -83,10 +83,10 @@
 
   # Enable the Plasma 5 Desktop Environment.
   services.xserver.enable = true; # X11
-#  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.displayManager.sddm.wayland.enable = true; # Enable Wayland commit out for X11
+  services.xserver.displayManager.sddm.enable = true;
+#  services.xserver.displayManager.sddm.wayland.enable = true; # Enable Wayland commit out for X11
   services.xserver.desktopManager.plasma5.enable = true;
-  services.xserver.displayManager.defaultSession ="plasmawayland"; # Enable Wayland
+  services.xserver.displayManager.defaultSession ="plasma"; # Enable Wayland 'plasmawayland'
   services.xserver.desktopManager.wallpaper.mode = "fill";
 
   # Enable Plasma 6
@@ -101,21 +101,23 @@
 #    oxygen
 #  ];
 
-  security.wrappers.sunshine = {
-    owner = "root";
-    group = "root";
-    capabilities = "cap_sys_admin+p";
-    source = "${pkgs.sunshine}/bin/sunshine";
-  };
 
-  systemd.user.services.sunshine =
-    {
-      description = "sunshine";
-      wantedBy = [ "graphical-session.target" ];
-      serviceConfig = {
-      ExecStart = "${config.security.wrapperDir}/sunshine";
-    };
-  };
+  # Enable Sunshine at Boot
+#  security.wrappers.sunshine = {
+#    owner = "root";
+#    group = "root";
+#    capabilities = "cap_sys_admin+p";
+#    source = "${pkgs.sunshine}/bin/sunshine";
+#  };
+
+#  systemd.user.services.sunshine =
+#    {
+#      description = "sunshine";
+#      wantedBy = [ "graphical-session.target" ];
+#      serviceConfig = {
+#      ExecStart = "${config.security.wrapperDir}/sunshine";
+#    };
+#  };
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -172,8 +174,8 @@
       mesa
 
       # Wayland
-      wlroots
-      wlrctl
+#      wlroots
+#      wlrctl
 #      vaapiVdpau #encoder
       vaapi-intel-hybrid #encoder
 #      nv-codec-headers-12 # encoder
