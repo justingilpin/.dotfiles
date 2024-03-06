@@ -4,6 +4,10 @@
 
 { config, lib, pkgs, ... }:
 
+#let 
+#  unstable = import <unstable> {};
+#in 
+
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -85,9 +89,9 @@
   services.xserver.enable = true; # X11
   services.xserver.displayManager.sddm.enable = true;
 #  services.xserver.displayManager.sddm.wayland.enable = true; # Enable Wayland commit out for X11
-  services.xserver.desktopManager.plasma5.enable = true;
-  services.xserver.displayManager.defaultSession ="plasma"; # Enable Wayland 'plasmawayland'
-  services.xserver.desktopManager.wallpaper.mode = "fill";
+  services.xserver.desktopManager.plasma6.enable = true;
+#  services.xserver.displayManager.defaultSession ="plasma"; # Enable Wayland 'plasmawayland'
+#  services.xserver.desktopManager.wallpaper.mode = "fill";
 
   # Enable Plasma 6
 #  services.xserver.enable = true;
@@ -169,10 +173,11 @@
       xclip
       dig
       go
-      sunshine
+#      sunshine
       ffmpeg #encoder
       mesa
       ntfs3g
+#      unstable.hello
 
       # Wayland
 #      wlroots
