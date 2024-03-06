@@ -172,6 +172,7 @@
       sunshine
       ffmpeg #encoder
       mesa
+      ntfs3g
 
       # Wayland
 #      wlroots
