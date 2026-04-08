@@ -105,6 +105,7 @@
       xclip
       xsel
       go
+			code-cursor-fhs
     ];
     shell = pkgs.zsh;
     useDefaultShell =true;

@@ -101,10 +101,11 @@
 	pavucontrol
 	wlogout
 	pipewire_0_2
-	sunshine
-	moonlight-qt
+#	sunshine
+#	moonlight-qt
 	avahi
 #        restic
+        waybar
         #------------ZSH----------------#
         starship
         zsh-syntax-highlighting

@@ -80,8 +80,8 @@ alias ll='ls -l'
 alias ls='ls --color=tty'
 alias c='clear'
 alias h='history'
-alias ec='nvim ~/.dotfiles/home/files/zshrc'
-alias sc='source ~/.dotfiles/home/files/zshrc'
+alias ec='nvim ~/.dots/home/files/zshrc'
+alias sc='source ~/.dots/home/files/zshrc'
 
 
 # SOPS
@@ -90,11 +90,9 @@ alias sc='source ~/.dotfiles/home/files/zshrc'
 
 
 # Nix Shortcuts
-alias rebuild-laptop='cd ~/.dotfiles/;sudo nixos-rebuild switch --flake .#fibonacci' # rebuilds laptop machine
-alias rebuild-desktop='cd ~/.dotfiles/;sudo nixos-rebuild switch --flake .#seykota' # rebuilds desktop machine
-alias rebuild-server='cd ~/.dotfiles/;sudo nixos-rebuild switch --flake .#server' # rebuilds server machine
-alias rebuild-hypr-desktop='cd ~/.dotfiles/;sudo nixos-rebuild switch --flake .#donchian' # rebuilds desktop hyprland
-alias rebuild-hypr-laptop='cd ~/.dotfiles/;sudo nixos-rebuild switch --flake .#markowitz' # rebuilds hypr laptop
+alias rebuild-laptop='cd ~/.dots/;sudo nixos-rebuild switch --flake .#fibonacci' # rebuilds laptop machine
+alias rebuild-desktop='cd ~/.dots/;sudo nixos-rebuild switch --flake .#seykota' # rebuilds desktop machine
+alias rebuild-server='cd ~/.dots/;sudo nixos-rebuild switch --flake .#server' # rebuilds server machine
 alias cefi='sudo nix-env --delete-generations old --profile /nix/var/nix/profiles/system;sudo /nix/var/nix/profiles/system/bin/switch-to-configuration switch' # Clean EFI when disk is full 
 alias train='vimtutor'
 alias aigraphics='export NIXPKGS_ALLOW_UNFREE=1;nvidia-offload nix-shell;nvidia-offload bash webui.sh --skip-torch-cuda-test --precision full --no-half'
