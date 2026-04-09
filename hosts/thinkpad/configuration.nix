@@ -106,6 +106,7 @@
       xsel
       go
 			code-cursor-fhs
+			wgnord (nordvpn helper that uses wireguard)
     ];
     shell = pkgs.zsh;
     useDefaultShell =true;
